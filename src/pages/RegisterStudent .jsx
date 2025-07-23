@@ -29,46 +29,72 @@ const RegisterStudent = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 to-blue-400 px-6 py-12">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-100 to-blue-300 px-4">
       <form
         onSubmit={handleRegister}
-        className="bg-white shadow-xl rounded-3xl p-12 w-full max-w-xl"
+        className="bg-white shadow-lg rounded-xl p-8 w-full max-w-lg"
       >
-        <h2 className="text-4xl font-extrabold mb-10 text-center text-blue-800 tracking-wide">
+        <h2 className="text-3xl font-extrabold mb-6 text-center text-blue-700">
           Register Student
         </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {[
-            { name: 'id', placeholder: 'ID', type: 'text' },
-            { name: 'name', placeholder: 'Full Name', type: 'text' },
-            { name: 'email', placeholder: 'Email', type: 'email' },
-            { name: 'password', placeholder: 'Password', type: 'password' },
-            { name: 'phone', placeholder: 'Phone', type: 'number' },
-            { name: 'class', placeholder: 'Class', type: 'text' },
-            { name: 'section', placeholder: 'Section', type: 'text' },
-            { name: 'rollNumber', placeholder: 'Roll Number', type: 'number' },
-          ].map(({ name, placeholder, type }) => (
-            <input
-              key={name}
-              type={type}
-              name={name}
-              placeholder={placeholder}
-              onChange={handleChange}
-              className="
-                block w-full
-                rounded-2xl
-                border border-gray-300
-                px-6 py-4
-                text-lg
-                placeholder-gray-400
-                focus:outline-none focus:ring-4 focus:ring-blue-300
-                transition
-                shadow-sm
-                hover:shadow-md
-              "
-            />
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <input
+            type="text"
+            name="id"
+            placeholder="ID"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="text"
+            name="name"
+            placeholder="Full Name"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="email"
+            name="email"
+            placeholder="Email"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="password"
+            name="password"
+            placeholder="Password"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="number"
+            name="phone"
+            placeholder="Phone"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="text"
+            name="class"
+            placeholder="Class"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="text"
+            name="section"
+            placeholder="Section"
+            onChange={handleChange}
+            className="input-style"
+          />
+          <input
+            type="number"
+            name="rollNumber"
+            placeholder="Roll Number"
+            onChange={handleChange}
+            className="input-style"
+          />
         </div>
 
         <input
@@ -76,37 +102,12 @@ const RegisterStudent = () => {
           name="address"
           placeholder="Address"
           onChange={handleChange}
-          className="
-            block w-full
-            rounded-2xl
-            border border-gray-300
-            px-6 py-4
-            mt-8
-            text-lg
-            placeholder-gray-400
-            focus:outline-none focus:ring-4 focus:ring-blue-300
-            transition
-            shadow-sm
-            hover:shadow-md
-          "
+          className="input-style mt-5 w-full"
         />
 
         <button
           type="submit"
-          className="
-            w-full
-            mt-10
-            bg-blue-700
-            text-white
-            font-semibold
-            text-xl
-            py-4
-            rounded-3xl
-            hover:bg-blue-800
-            transition
-            shadow-lg
-            focus:outline-none focus:ring-4 focus:ring-blue-400
-          "
+          className="w-full mt-7 bg-blue-600 text-white font-semibold py-3 rounded-xl hover:bg-blue-700 transition duration-300"
         >
           Register
         </button>

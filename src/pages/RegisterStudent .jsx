@@ -21,7 +21,7 @@ const RegisterStudent = () => {
   const handleRegister = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post('http://localhost:3000/register', formData);
+      await axios.post('http://localhost:3000/register', formData);
       alert('Student registered successfully!');
     } catch (err) {
       alert('Registration failed: ' + err.response?.data?.message);
@@ -29,35 +29,84 @@ const RegisterStudent = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-white px-4">
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-blue-200 to-blue-400 px-6 py-12">
       <form
         onSubmit={handleRegister}
-        className="bg-blue-50 shadow-lg rounded-xl p-8 w-full max-w-lg"
+        className="bg-white shadow-xl rounded-3xl p-12 w-full max-w-xl"
       >
-        <h2 className="text-2xl font-bold mb-6 text-blue-700 text-center">Register Student</h2>
+        <h2 className="text-4xl font-extrabold mb-10 text-center text-blue-800 tracking-wide">
+          Register Student
+        </h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <input className="input" type="text" name="id" placeholder="ID" onChange={handleChange} />
-          <input className="input" type="text" name="name" placeholder="Full Name" onChange={handleChange} />
-          <input className="input" type="email" name="email" placeholder="Email" onChange={handleChange} />
-          <input className="input" type="password" name="password" placeholder="Password" onChange={handleChange} />
-          <input className="input" type="number" name="phone" placeholder="Phone" onChange={handleChange} />
-          <input className="input" type="text" name="class" placeholder="Class" onChange={handleChange} />
-          <input className="input" type="text" name="section" placeholder="Section" onChange={handleChange} />
-          <input className="input" type="number" name="rollNumber" placeholder="Roll Number" onChange={handleChange} />
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {[
+            { name: 'id', placeholder: 'ID', type: 'text' },
+            { name: 'name', placeholder: 'Full Name', type: 'text' },
+            { name: 'email', placeholder: 'Email', type: 'email' },
+            { name: 'password', placeholder: 'Password', type: 'password' },
+            { name: 'phone', placeholder: 'Phone', type: 'number' },
+            { name: 'class', placeholder: 'Class', type: 'text' },
+            { name: 'section', placeholder: 'Section', type: 'text' },
+            { name: 'rollNumber', placeholder: 'Roll Number', type: 'number' },
+          ].map(({ name, placeholder, type }) => (
+            <input
+              key={name}
+              type={type}
+              name={name}
+              placeholder={placeholder}
+              onChange={handleChange}
+              className="
+                block w-full
+                rounded-2xl
+                border border-gray-300
+                px-6 py-4
+                text-lg
+                placeholder-gray-400
+                focus:outline-none focus:ring-4 focus:ring-blue-300
+                transition
+                shadow-sm
+                hover:shadow-md
+              "
+            />
+          ))}
         </div>
 
         <input
-          className="input mt-4 w-full"
           type="text"
           name="address"
           placeholder="Address"
           onChange={handleChange}
+          className="
+            block w-full
+            rounded-2xl
+            border border-gray-300
+            px-6 py-4
+            mt-8
+            text-lg
+            placeholder-gray-400
+            focus:outline-none focus:ring-4 focus:ring-blue-300
+            transition
+            shadow-sm
+            hover:shadow-md
+          "
         />
 
         <button
           type="submit"
-          className="w-full mt-6 bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 transition"
+          className="
+            w-full
+            mt-10
+            bg-blue-700
+            text-white
+            font-semibold
+            text-xl
+            py-4
+            rounded-3xl
+            hover:bg-blue-800
+            transition
+            shadow-lg
+            focus:outline-none focus:ring-4 focus:ring-blue-400
+          "
         >
           Register
         </button>
@@ -65,16 +114,5 @@ const RegisterStudent = () => {
     </div>
   );
 };
-
-// Tailwind custom input class
-const inputStyle = `
-  block w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 
-  focus:ring-blue-400 bg-white placeholder-gray-500
-`;
-
-// Inject input styles globally (optional)
-const style = document.createElement('style');
-style.innerHTML = `.input { ${inputStyle} }`;
-document.head.appendChild(style);
 
 export default RegisterStudent;
